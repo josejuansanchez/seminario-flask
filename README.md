@@ -1,11 +1,31 @@
-# seminario-flask
+# Introducción a Flask
 
-Ejemplos utilizados en el seminario de Flask.
+Este repositorio contiene los ejemplos utilizados en el seminario de [Flask][1] de la
+asignatura de [Negocio Electrónico][2].
 
+En este seminario vamos ver cómo crear una aplicación web **muy básica** con
+[Flask][1] y cómo integrar el modelo [LSTM][3] (_Long Short-Term Memory_) que
+desarrollamos en el seminario anterior con [TensorFlow/Keras][4].
 
-## Creación y activación del entorno virtual
+El modelo era capaz de analizar una frase de un cliente y clasificarla en una
+de las siguientes categorías: `AYUDA`, `OK` y `SERVICIO_TECNICO`.
 
-**Linux y MacOS**
+## 1. Introducción
+
+### 1.1 Sesiones previas
+
+- Primera sesión: [Introducción a Python][6].
+- Segunda sesión: [Modelos LSTM con TensorFlow][7].
+
+### 1.2 Requisitos previos
+
+- Necesitará un versión de Python que esté entre la 3.8 y [3.11][4].
+- Se recomienda el uso [entornos virtuales con virtualenv][5].
+- Se recomienda el uso de [Visual Studio Code][8].
+
+### 1.3 Creación y activación del entorno virtual
+
+**Linux y macOS**
 
 ```bash
 # Creamos el entorno virtual
@@ -25,7 +45,9 @@ py -3.11 -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-## Instalación de las dependencias de forma manual
+### 1.4 Instalación de las dependencias de forma manual
+
+Vamos a necesitar instalar `flask` y `tensorflow`.
 
 ```bash
 # Instalamos Flask
@@ -35,7 +57,7 @@ pip install flask
 pip install tensorflow
 ```
 
-## Creación del archivo `requeriments.txt`
+### 1.5 Creación del archivo `requeriments.txt`
 
 ```bash
 pip freeze > requirements.txt
@@ -49,18 +71,33 @@ comando:
 pip install -r requirements.txt
 ```
 
-## ¿Qué es Flask?
+## 2. Conceptos básicos
+
+### 2.1 ¿Qué es Flask?
 
 Flask es un **micro-framework** escrito en Python que permite crear aplicaciones
 web rápidamente de forma sencilla.
 
 Es ideal para pequeños proyectos o prototipos.
 
-## Instalación de Flask
+### 2.2 Instalación de Flask
 
 - https://flask-es.readthedocs.io/installation/
 
-## Creación de una aplicación Flask
+### 2.3 ¿Qué es el patrón MVC en aplicaciones web?
+
+**MVC** (_Model-View-Controller_) es un patrón de diseño que separa una
+aplicación en tres componentes:
+
+- **Modelo**: Gestiona los datos y la lógica de negocio (base de datos, reglas de validación).
+- **Vista**: Maneja la presentación de datos (plantillas HTML).
+- **Controlador**: Recibe las peticiones del usuario, interactúa con el Modelo y renderiza la Vista.
+
+![](images/mvc.png)
+Imagen: Descripción del patrón MVC. Imagen obtenida de la página [ExplainThis](https://www.explainthis.io/en/swe/mvc).
+
+
+### 2.3 Creación de una aplicación Flask
 
 Vamos a crear un archivo que se llama `app.py` con el siguiente contenido:
 
@@ -74,7 +111,7 @@ def hello_world():
     return 'Hello, World!'
 ```
 
-## Ejecución de la aplicación
+### 2.4 Ejecución de la aplicación
 
 ```bash
 python app.py
@@ -84,3 +121,12 @@ python app.py
 
 - https://flask-es.readthedocs.io/quickstart/
 - https://flask-es.readthedocs.io/tutorial/
+
+[1]: https://flask.palletsprojects.com/es/stable/
+[2]: https://www.ual.es/estudios/grados/presentacion/plandeestudios/asignatura/4015/40153316
+[3]: https://github.com/josejuansanchez/modelo-lstm-tensorflow/
+[4]: https://www.python.org/downloads/release/python-3119/
+[5]: https://josejuansanchez.org/python-for-java-developers/#_entornos_virtuales_
+[6]: https://josejuansanchez.org/python-for-java-developers/
+[7]: https://github.com/josejuansanchez/modelo-lstm-tensorflow
+[8]: https://code.visualstudio.com
