@@ -177,7 +177,7 @@ if __name__ == '__main__':
 1. Despliegue la aplicación web en su entorno de desarrollo.
 2. Abra un navegador y acceda a la URL `http://localhost:5000`.
 
-### 3.2 Ejemplo 02. Manejo de rutas con `@app.route`
+### 3.2 Ejemplo 02. Enrutamiento con `@app.route`
 
 ```python
 from flask import Flask
@@ -212,7 +212,7 @@ if __name__ == '__main__':
 2. ¿Y si accedemos a la URL `http://127.0.0.1:5000/contacto/`?
 3. ¿Qué está ocurriendo?
 
-### 3.3 Ejemplo 03
+### 3.3 Ejemplo 03. Rutas con barras al final
 
 ```python
 from flask import Flask
@@ -240,6 +240,26 @@ if __name__ == '__main__':
 
 > [!NOTE]
 > [Ejemplo 03](ejemplo_03/app.py)
+
+Si definimos la ruta con una barra al final:
+
+```python
+@app.route('/contacto/')
+```
+
+Flask gestionará la URL como si fuese un directorio. Por lo tanto, si accedemos
+a `/contacto` (sin barra), Flask automáticamente hará una redirección HTTP `301` a
+`/contacto/`.
+
+Sin embargo, si definimos la ruta sin barra al final:
+
+```python
+@app.route('/contacto')
+```
+
+Flask gestionará la URL como un archivo individual, y al acceder a `/contacto/`
+(con barra al final), Flask devolverá un error HTTP `404`, de recurso no
+encontrado.
 
 ### 3.4 Ejemplo 04
 
