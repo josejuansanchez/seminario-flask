@@ -77,7 +77,7 @@ pip install -r requirements.txt
 ### 2.1 ¿Qué es Flask?
 
 Flask es un **micro-framework** escrito en Python que permite crear aplicaciones
-web rápidamente de forma sencilla. Es ideal para pequeños proyectos o
+web rápidamente de forma sencilla. Es ideal para proyectos pequeños o
 prototipos.
 
 ### 2.2 Instalación de Flask
@@ -122,9 +122,79 @@ if __name__ == '__main__':
 
 ### 2.4 Ejecución de la aplicación
 
+**Linux y macOS**
+
 ```bash
 python app.py
 ```
+
+**Windows**
+
+```bash
+py app.py
+```
+
+## 3. Ejemplos
+
+### 3.1 Ejemplo 01
+
+> [!NOTE]
+> [Ejemplo 01](ejemplo_01/app.py)
+
+### 3.2 Ejemplo 02
+
+> [!NOTE]
+> [Ejemplo 02](ejemplo_02/app.py)
+
+### 3.3 Ejemplo 03
+
+> [!NOTE]
+> [Ejemplo 03](ejemplo_03/app.py)
+
+### 3.4 Ejemplo 04
+
+> [!NOTE]
+> [Ejemplo 04](ejemplo_04/app.py)
+
+### 3.5 Ejemplo 05
+
+> [!NOTE]
+> [Ejemplo 05](ejemplo_05/app.py)
+
+### 3.6 Ejemplo 06
+
+> [!NOTE]
+> [Ejemplo 06](ejemplo_06/app.py)
+
+### 3.7 Ejemplo 07
+
+> [!NOTE]
+> [Ejemplo 07](ejemplo_07/app.py)
+
+### 3.8 Ejemplo 08
+
+> [!NOTE]
+> [Ejemplo 08](ejemplo_08/app.py)
+
+### 3.9 Ejemplo 09
+
+> [!NOTE]
+> [Ejemplo 09](ejemplo_09/app.py)
+
+### 3.10 Ejemplo 10
+
+> [!NOTE]
+> [Ejemplo 10](ejemplo_10/app.py)
+
+### 3.11 Ejemplo 11
+
+> [!NOTE]
+> [Ejemplo 11](ejemplo_11/app.py)
+
+### 3.12 Ejemplo 12
+
+> [!NOTE]
+> [Ejemplo 12](ejemplo_12/app.py)
 
 ## Créditos
 

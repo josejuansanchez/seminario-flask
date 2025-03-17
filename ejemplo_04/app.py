@@ -1,7 +1,9 @@
 from flask import Flask
 
+# Creamos una instancia de Flask
 app = Flask(__name__)
 
+# Definimos los endpoints de la aplicación
 @app.route('/<string:name>')
 def index(name=None):    
     return f"Hola {name}!"

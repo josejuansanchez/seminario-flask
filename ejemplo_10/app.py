@@ -4,8 +4,10 @@ from flask import render_template
 from flask import redirect
 from flask import url_for
 
+# Creamos una instancia de Flask
 app = Flask(__name__)
 
+# Definimos los endpoints de la aplicación
 @app.route('/')
 def index():
     return render_template('index.html')

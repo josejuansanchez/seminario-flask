@@ -2,8 +2,10 @@ from flask import Flask
 from flask import request
 from flask import render_template
 
+# Creamos una instancia de Flask
 app = Flask(__name__)
 
+# Definimos los endpoints de la aplicación
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':

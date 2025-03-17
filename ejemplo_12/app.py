@@ -3,9 +3,13 @@ from flask import request
 from flask import render_template
 from chatbot import Chatbot
 
+# Creamos una instancia de Flask
 app = Flask(__name__)
+
+# Creamos una instancia del Chatbot
 bot = Chatbot("modelo.keras", "vocabulary.txt", "etiquetas.json")
 
+# Definimos los endpoints de la aplicación
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
