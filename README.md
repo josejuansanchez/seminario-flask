@@ -678,7 +678,8 @@ Plantilla `index.html`:
 
 ## Créditos
 
-La imagen del patrón MVC ha sido obtenida de la página [ExplainThis](https://www.explainthis.io/en/swe/mvc).
+- La imagen del patrón MVC se ha obtenido de la página [ExplainThis](https://www.explainthis.io/en/swe/mvc).
+- La imagen de los códigos de estado HTTP se ha obtenido de [ByteByteGo.com](https://github.com/ByteByteGoHq/system-design-101).
 
 ## Referencias
 
