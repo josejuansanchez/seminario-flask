@@ -15,7 +15,7 @@ de las siguientes categorías: `AYUDA`, `OK` y `SERVICIO_TECNICO`.
 ### 1.1 Sesiones previas
 
 - Primera sesión: [Introducción a Python][6].
-- Segunda sesión: [Modelos LSTM con TensorFlow][7].
+- Segunda sesión: [Creacion de un modelo LSTM con TensorFlow][7].
 
 ### 1.2 Requisitos previos
 
@@ -47,7 +47,8 @@ py -3.11 -m venv .venv
 
 ### 1.4 Instalación de las dependencias de forma manual
 
-Vamos a necesitar instalar `flask` y `tensorflow`.
+Para poder realizar los ejemplos de este seminario vamos a necesitar instalar
+`flask` y `tensorflow`.
 
 ```bash
 # Instalamos Flask
@@ -76,9 +77,8 @@ pip install -r requirements.txt
 ### 2.1 ¿Qué es Flask?
 
 Flask es un **micro-framework** escrito en Python que permite crear aplicaciones
-web rápidamente de forma sencilla.
-
-Es ideal para pequeños proyectos o prototipos.
+web rápidamente de forma sencilla. Es ideal para pequeños proyectos o
+prototipos.
 
 ### 2.2 Instalación de Flask
 
@@ -104,18 +104,31 @@ Vamos a crear un archivo que se llama `app.py` con el siguiente contenido:
 ```python
 from flask import Flask
 
+# Creamos una instancia de Flask
 app = Flask(__name__)
 
+# Definimos los endpoints de la aplicación
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def index():
+    return 'Hola, mundo!'
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
 ```
+
+> [!NOTE]
+> [Ejemplo 01](ejemplo_01)
 
 ### 2.4 Ejecución de la aplicación
 
 ```bash
 python app.py
 ```
+
+## Créditos
+
+La imagen del patrón MVC ha sido obtenida de la página [ExplainThis](https://www.explainthis.io/en/swe/mvc).
 
 ## Referencias
 
