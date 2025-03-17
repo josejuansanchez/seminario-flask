@@ -162,7 +162,7 @@ app = Flask(__name__)
 # Definimos los endpoints de la aplicación
 @app.route('/')
 def index():
-    return 'Hola, mundo!'
+    return '<h1>Hola, mundo!</h1>'
 
 # Programa principal
 if __name__ == '__main__':
@@ -171,6 +171,11 @@ if __name__ == '__main__':
 
 > [!NOTE]
 > [Ejemplo 01](ejemplo_01/app.py)
+
+**Ejercicio**
+
+1. Despliegue la aplicación web en su entorno de desarrollo.
+2. Abra un navegador y acceda a la URL `http://localhost:5000`.
 
 ### 3.2 Ejemplo 02. Manejo de rutas con `@app.route`
 

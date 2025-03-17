@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Definimos los endpoints de la aplicación
 @app.route('/')
 def index():
-    return 'Hola, mundo!'
+    return '<h1>Hola, mundo!</h1>'
 
 # Programa principal
 if __name__ == '__main__':
