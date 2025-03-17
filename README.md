@@ -88,7 +88,7 @@ pequeños, prototipos o APIs.
 
 [Flask][1] depende de dos librerías:
 
-- [Werkzeug][9] para implementar el estándar WSGI (*Web Server Gateway
+- [Werkzeug][9] para implementar el estándar [WSGI][11] (*Web Server Gateway
   Interface*) que permite que un servidor web pueda comunicarse con una
   aplicación Python.
 - [Jinja2][10] para manejar las plantillas (HTML). 
@@ -105,11 +105,12 @@ aplicación en tres componentes:
 ![](images/mvc.png)
 Imagen: Descripción del patrón MVC. Imagen obtenida de la página [ExplainThis](https://www.explainthis.io/en/swe/mvc).
 
-### 2.3 Creación de una aplicación Flask
+### 2.3 Creación de una aplicación web en Flask
 
 Vamos a crear un archivo que se llama `app.py` con el siguiente contenido:
 
 ```python
+# Importamos la clase Flask del paquete flask
 from flask import Flask
 
 # Creamos una instancia de Flask
@@ -124,9 +125,6 @@ def index():
 if __name__ == '__main__':
     app.run(debug=True)
 ```
-
-> [!NOTE]
-> [Ejemplo 01](ejemplo_01)
 
 ### 2.4 Ejecución de la aplicación en un entorno de desarrollo
 
@@ -202,6 +200,12 @@ if __name__ == '__main__':
 
 > [!NOTE]
 > [Ejemplo 02](ejemplo_02/app.py)
+
+**Ejercicio**
+
+1. ¿Qué ocurre si accedemos a la URL `http://127.0.0.1:5000/contacto`?
+2. ¿Y si accedemos a la URL `http://127.0.0.1:5000/contacto/`?
+3. ¿Qué está ocurriendo?
 
 ### 3.3 Ejemplo 03
 
@@ -384,3 +388,4 @@ La imagen del patrón MVC ha sido obtenida de la página [ExplainThis](https://w
 [8]: https://code.visualstudio.com
 [9]: https://werkzeug.palletsprojects.com/en/stable/
 [10]: https://jinja.palletsprojects.com/en/stable/
+[11]: https://es.wikipedia.org/wiki/WSGI
