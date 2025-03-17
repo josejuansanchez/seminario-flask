@@ -138,35 +138,187 @@ py app.py
 
 ### 3.1 Ejemplo 01
 
+```python
+from flask import Flask
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/')
+def index():
+    return 'Hola, mundo!'
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
 > [!NOTE]
 > [Ejemplo 01](ejemplo_01/app.py)
 
 ### 3.2 Ejemplo 02
+
+```python
+from flask import Flask
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/')
+def index():
+    return 'Página principal'
+
+@app.route('/contacto')
+def contacto():
+    return 'Contacto'
+
+@app.route('/formulario')
+def formulario():
+    return 'Formulario'
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
 
 > [!NOTE]
 > [Ejemplo 02](ejemplo_02/app.py)
 
 ### 3.3 Ejemplo 03
 
+```python
+from flask import Flask
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/')
+def index():
+    return 'Página principal'
+
+@app.route('/contacto/')
+def contacto():
+    return 'Contacto'
+
+@app.route('/formulario/')
+def formulario():
+    return 'Formulario'
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
 > [!NOTE]
 > [Ejemplo 03](ejemplo_03/app.py)
 
 ### 3.4 Ejemplo 04
+
+```python
+from flask import Flask
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/<string:name>')
+def index(name=None):    
+    return f"Hola {name}!"
+
+@app.route('/producto/<int:id>')
+def producto(id):
+    return f"Producto: {id}"
+
+@app.route('/producto/<float:price>')
+def precio(price):
+    return f"Precio: {price}"
+
+@app.route('/path/<path:subpath>')
+def path(subpath):
+    return f"Subpath: {subpath}"
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
 
 > [!NOTE]
 > [Ejemplo 04](ejemplo_04/app.py)
 
 ### 3.5 Ejemplo 05
 
+```python
+from flask import Flask
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/')
+def index():
+    return f"Página principal"
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return f"La página no existe. Error: {error}", 404
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
 > [!NOTE]
 > [Ejemplo 05](ejemplo_05/app.py)
 
 ### 3.6 Ejemplo 06
 
+```python
+from flask import Flask
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.get('/')
+def handle_get():
+    return "Petición por GET"
+
+@app.post('/')
+def handle_post():
+    return "Petición por POST"
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
 > [!NOTE]
 > [Ejemplo 06](ejemplo_06/app.py)
 
 ### 3.7 Ejemplo 07
+
+```python
+from flask import Flask
+from flask import request
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        return "Petición por POST"
+    else:
+        return "Petición por GET"
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
 
 > [!NOTE]
 > [Ejemplo 07](ejemplo_07/app.py)
