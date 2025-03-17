@@ -7,9 +7,6 @@ En este seminario vamos ver cómo crear una aplicación web **muy básica** con
 [Flask][1] y cómo integrar el modelo [LSTM][3] (_Long Short-Term Memory_) que
 desarrollamos en el seminario anterior con [TensorFlow/Keras][4].
 
-El modelo era capaz de analizar una frase de un cliente y clasificarla en una
-de las siguientes categorías: `AYUDA`, `OK` y `SERVICIO_TECNICO`.
-
 ## 1. Introducción
 
 ### 1.1 Sesiones previas
@@ -45,7 +42,16 @@ py -3.11 -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-### 1.4 Instalación de las dependencias de forma manual
+### 1.4 Desactivación del entorno virtual
+
+Cuando haya terminado de trabajar con el entorno virtual, puede desactivarlo
+ejecutando el siguiente comando:
+
+```bash
+deactivate
+```
+
+### 1.5 Instalación de las dependencias de forma manual
 
 Para poder realizar los ejemplos de este seminario vamos a necesitar instalar
 `flask` y `tensorflow`.
@@ -58,7 +64,7 @@ pip install flask
 pip install tensorflow
 ```
 
-### 1.5 Creación del archivo `requeriments.txt`
+### 1.6 Creación del archivo `requeriments.txt`
 
 ```bash
 pip freeze > requirements.txt
@@ -76,15 +82,18 @@ pip install -r requirements.txt
 
 ### 2.1 ¿Qué es Flask?
 
-Flask es un **micro-framework** escrito en Python que permite crear aplicaciones
-web rápidamente de forma sencilla. Es ideal para proyectos pequeños o
-prototipos.
+[Flask][1] es un **microframework** escrito en Python que permite crear
+aplicaciones web rápidamente de forma sencilla. Es ideal para proyectos
+pequeños, prototipos o APIs.
 
-### 2.2 Instalación de Flask
+[Flask][1] depende de dos librerías:
 
-- https://flask-es.readthedocs.io/installation/
+- [Werkzeug][9] para implementar el estándar WSGI (*Web Server Gateway
+  Interface*) que permite que un servidor web pueda comunicarse con una
+  aplicación Python.
+- [Jinja2][10] para manejar las plantillas (HTML). 
 
-### 2.3 ¿Qué es el patrón MVC en aplicaciones web?
+### 2.2 ¿Qué es el patrón MVC en aplicaciones web?
 
 **MVC** (_Model-View-Controller_) es un patrón de diseño que separa una
 aplicación en tres componentes:
@@ -95,7 +104,6 @@ aplicación en tres componentes:
 
 ![](images/mvc.png)
 Imagen: Descripción del patrón MVC. Imagen obtenida de la página [ExplainThis](https://www.explainthis.io/en/swe/mvc).
-
 
 ### 2.3 Creación de una aplicación Flask
 
@@ -110,7 +118,7 @@ app = Flask(__name__)
 # Definimos los endpoints de la aplicación
 @app.route('/')
 def index():
-    return 'Hola, mundo!'
+    return '<h1>Hola, mundo!</h1>'
 
 # Programa principal
 if __name__ == '__main__':
@@ -120,7 +128,10 @@ if __name__ == '__main__':
 > [!NOTE]
 > [Ejemplo 01](ejemplo_01)
 
-### 2.4 Ejecución de la aplicación
+### 2.4 Ejecución de la aplicación en un entorno de desarrollo
+
+En nuestro entorno de desarrollo, utlizaremos el servidor web que viene
+integrado en Flask. 
 
 **Linux y macOS**
 
@@ -134,9 +145,15 @@ python app.py
 py app.py
 ```
 
+### 2.5 Cómo desplegar una aplicación Flask en un entorno de producción
+
+Para ejecutar una aplicación Flask en un entorno de producción, se recomienda
+utilizar un servidor WSGI como [Gunicorn](https://gunicorn.org/).
+
+
 ## 3. Ejemplos
 
-### 3.1 Ejemplo 01
+### 3.1 Ejemplo 01. `Hola, mundo!`
 
 ```python
 from flask import Flask
@@ -157,7 +174,7 @@ if __name__ == '__main__':
 > [!NOTE]
 > [Ejemplo 01](ejemplo_01/app.py)
 
-### 3.2 Ejemplo 02
+### 3.2 Ejemplo 02. Manejo de rutas con `@app.route`
 
 ```python
 from flask import Flask
@@ -365,3 +382,5 @@ La imagen del patrón MVC ha sido obtenida de la página [ExplainThis](https://w
 [6]: https://josejuansanchez.org/python-for-java-developers/
 [7]: https://github.com/josejuansanchez/modelo-lstm-tensorflow
 [8]: https://code.visualstudio.com
+[9]: https://werkzeug.palletsprojects.com/en/stable/
+[10]: https://jinja.palletsprojects.com/en/stable/
