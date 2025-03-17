@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Datos Personales</h1>        
+
+        {% if nombre and email %}
+        <div class="response-box">
+            <h3>El registro se ha realizado con éxito:</h3>
+            <p>Nombre: {{ nombre }}</p>
+            <p>Email: {{ email }}</p>
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>

@@ -1,9 +1,4 @@
-# seminario-flask
-
-Ejemplos utilizados en el seminario de Flask.
-
-
-## Creación y activación del entorno virtual
+# Creación y activación del entorno virtual
 
 **Linux y MacOS**
 
@@ -25,7 +20,7 @@ py -3.11 -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-## Instalación de las dependencias de forma manual
+# Instalación de las dependencias de forma manual
 
 ```bash
 # Instalamos Flask
@@ -35,7 +30,7 @@ pip install flask
 pip install tensorflow
 ```
 
-## Creación del archivo `requeriments.txt`
+# Creación del archivo `requeriments.txt`
 
 ```bash
 pip freeze > requirements.txt
@@ -49,18 +44,18 @@ comando:
 pip install -r requirements.txt
 ```
 
-## ¿Qué es Flask?
+# ¿Qué es Flask?
 
 Flask es un **micro-framework** escrito en Python que permite crear aplicaciones
 web rápidamente de forma sencilla.
 
 Es ideal para pequeños proyectos o prototipos.
 
-## Instalación de Flask
+# Instalación de Flask
 
 - https://flask-es.readthedocs.io/installation/
 
-## Creación de una aplicación Flask
+# Creación de una aplicación Flask
 
 Vamos a crear un archivo que se llama `app.py` con el siguiente contenido:
 
@@ -74,13 +69,13 @@ def hello_world():
     return 'Hello, World!'
 ```
 
-## Ejecución de la aplicación
+# Ejecución de la aplicación
 
 ```bash
 python app.py
 ```
 
-## Referencias
+# Referencias
 
 - https://flask-es.readthedocs.io/quickstart/
 - https://flask-es.readthedocs.io/tutorial/

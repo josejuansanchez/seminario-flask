@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Interactivo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Chatbot de Soporte</h1>
+        
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="mensaje">Escribe tu mensaje:</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" 
+                          rows="3" required>{{ mensaje if mensaje }}</textarea>
+            </div>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+
+        {% if respuesta %}
+        <div class="response-box">
+            <h3>Respuesta:</h3>
+            <p>{{ respuesta }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
