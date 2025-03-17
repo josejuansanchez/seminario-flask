@@ -103,7 +103,7 @@ aplicación en tres componentes:
 - **Controlador**: Recibe las peticiones del usuario, interactúa con el Modelo y renderiza la Vista.
 
 ![](images/mvc.png)
-Imagen: Descripción del patrón MVC. Imagen obtenida de la página [ExplainThis](https://www.explainthis.io/en/swe/mvc).
+Imagen 1: Descripción del patrón MVC. Imagen obtenida de la página [ExplainThis](https://www.explainthis.io/en/swe/mvc).
 
 ### 2.3 Creación de una aplicación web en Flask
 
@@ -261,7 +261,7 @@ Flask gestionará la URL como un archivo individual, y al acceder a `/contacto/`
 (con barra al final), Flask devolverá un error HTTP `404`, de recurso no
 encontrado.
 
-### 3.4 Ejemplo 04
+### 3.4 Ejemplo 04. Secciones variables en las rutas
 
 ```python
 from flask import Flask
@@ -294,7 +294,20 @@ if __name__ == '__main__':
 > [!NOTE]
 > [Ejemplo 04](ejemplo_04/app.py)
 
-### 3.5 Ejemplo 05
+Los diferentes tipos de convertidores que podemos utilizar en las rutas son:
+
+- `string`: Acepta cualquier texto sin barras. Es la opción por defecto.
+- `int`: Acepta números enteros.
+- `float`: Acepta números en coma flotante.
+- `path`: Acepta cualquier texto, incluyendo barras.
+- `uuid`: Acepta UUIDs.
+
+**Ejercicios**
+
+1. Crea una ruta `/cuadrado/<int:numero>` que devuelva el cuadrado del número recibido.
+2. Crea una ruta `/suma/<int:num1>/<int:num2>` que devuelva la suma de los dos números recibidos.
+
+### 3.5 Ejemplo 05. Gestión de errores
 
 ```python
 from flask import Flask
@@ -319,7 +332,20 @@ if __name__ == '__main__':
 > [!NOTE]
 > [Ejemplo 05](ejemplo_05/app.py)
 
-### 3.6 Ejemplo 06
+El decorador `@app.errorhandler` nos permite gestionar los errores que se
+producen en nuestra aplicación. En este caso, estamos gestionando el error `404`
+que ocurre cuando el cliente solicita una página que no existe.
+
+La función que se pasa como argumento al decorador `@app.errorhandler` recibe el
+error que se ha producido y devuelve dos valores, un mensaje de error y el
+código de estado HTTP, que en este caso es el `404`. Si no se modifica este
+valor se devolvería el código de estado `200`.
+
+![](images/http-status-codes.png)
+
+Imagen 2: Imagen obtenida de [ByteByteGo.com](https://github.com/ByteByteGoHq/system-design-101).
+
+### 3.6 Ejemplo 06. Métodos HTTP (`GET` y `POST`)
 
 ```python
 from flask import Flask
@@ -344,7 +370,20 @@ if __name__ == '__main__':
 > [!NOTE]
 > [Ejemplo 06](ejemplo_06/app.py)
 
-### 3.7 Ejemplo 07
+Para enviar peticiones `POST` y `GET` puede utilizar
+[Postman](https://www.postman.com/) o [`curl`](https://curl.se/).
+
+**Ejemplos:**
+
+```bash
+curl -X POST http://localhost:5000/
+```
+
+```bash
+curl -X GET http://localhost:5000/
+```
+
+### 3.7 Ejemplo 07. Métodos HTTP (`GET` y `POST`) utilizando `request`
 
 ```python
 from flask import Flask
@@ -369,27 +408,270 @@ if __name__ == '__main__':
 > [!NOTE]
 > [Ejemplo 07](ejemplo_07/app.py)
 
-### 3.8 Ejemplo 08
+### 3.8 Ejemplo 08. Plantillas Jinja2
+
+Estructura del proyecto:
+
+```
+.
+├── app.py
+└── templates
+    └── index.html
+```
+
+Código de la aplicación web `app.py`:
+
+
+```python
+from flask import Flask
+from flask import render_template
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/')
+@app.route('/<string:name>')
+def hello(name=None):
+    return render_template('index.html', person=name)
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+Código de la plantilla `index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola desde Flask</title>
+</head>
+<body>
+    {% if person %}
+    <h1>Hola {{ person }}!</h1>
+    {% else %}
+    <h1>Hola mundo!</h1>
+    {% endif %}    
+</body>
+</html>
+```
 
 > [!NOTE]
-> [Ejemplo 08](ejemplo_08/app.py)
+> [Ejemplo 08](ejemplo_08/)
 
-### 3.9 Ejemplo 09
+### 3.9 Ejemplo 09. Plantillas Jinja2 con hojas de estilo CSS
+
+Estructura del proyecto:
+
+```
+.
+├── app.py
+├── static
+│   └── styles.css
+└── templates
+    └── index.html
+```
+
+Código fuente de la aplicación web `app.py`.
+
+```python
+from flask import Flask
+from flask import render_template
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/')
+@app.route('/<string:name>')
+def hello(name=None):
+    return render_template('index.html', person=name)
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+Plantilla `index.html`:
+
+```html
+...
+<head>
+    ...
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">    
+</head>
+...
+<div class="greeting-card">
+    {% if person %}
+    <h1>¡Hola <span style="color: var(--secondary-color);">{{ person }}</span>!</h1>
+    {% else %}
+    <h1>¡Hola <span style="color: var(--secondary-color);">Mundo</span>!</h1>
+    {% endif %}
+</div>    
+...
+```
 
 > [!NOTE]
-> [Ejemplo 09](ejemplo_09/app.py)
+> [Ejemplo 09](ejemplo_09/)
 
-### 3.10 Ejemplo 10
+### 3.10 Ejemplo 10. Formularios
+
+En este ejemplo **los datos del formulario se envían a una ruta diferente** de la
+ruta donde se está mostrando el formulario.
+
+Estructura del proyecto:
+
+```
+.
+├── app.py
+├── static
+│   └── styles.css
+└── templates
+    ├── index.html
+    └── registro.html
+```
+
+Código fuente de la aplicación web `app.py`:
+
+```python
+from flask import Flask
+from flask import request
+from flask import render_template
+from flask import redirect
+from flask import url_for
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/registro/', methods=['GET', 'POST'])
+def procesar_formulario():
+    if request.method == 'POST':
+        # Obtenemos los parámetros del formulario
+        nombre = request.form['nombre']
+        email = request.form['email']
+
+        # Devolvemos los datos a la plantilla
+        return render_template('registro.html', nombre=nombre, email=email)
+    else:
+        return redirect(url_for('index'))
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+Plantilla `index.html`:
+
+```html
+...
+<form method="POST" action="/registro">
+    <div class="form-group">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" 
+                required maxlength="50">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" class="form-control" id="email" name="email"
+                required pattern="[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    </div>
+
+    <button type="submit" class="btn">Registrar</button>
+</form>
+...
+```
 
 > [!NOTE]
-> [Ejemplo 10](ejemplo_10/app.py)
+> [Ejemplo 10](ejemplo_10/)
 
-### 3.11 Ejemplo 11
+### 3.11 Ejemplo 11. Formularios
+
+En este ejemplo **los datos del formulario se envían a la misma ruta** del
+formulario.
+
+Estructura del proyecto:
+
+```
+.
+├── app.py
+├── static
+│   └── styles.css
+└── templates
+    └── index.html
+```
+
+Código fuente de la aplicación web `app.py`:
+
+```python
+from flask import Flask
+from flask import request
+from flask import render_template
+
+# Creamos una instancia de Flask
+app = Flask(__name__)
+
+# Definimos los endpoints de la aplicación
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        # Obtenemos los parámetros del formulario
+        nombre = request.form['nombre']
+        email = request.form['email']
+        
+        # Devolvemos los datos a la plantilla
+        return render_template('index.html', nombre=nombre, email=email)
+    else:
+        return render_template('index.html')
+
+# Programa principal
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+Plantilla `index.html`:
+
+```html
+...
+<form method="POST" action="/">
+    <div class="form-group">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" 
+                required maxlength="50">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" class="form-control" id="email" name="email"
+                required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    </div>
+
+    <button type="submit" class="btn">Registrar</button>
+</form>
+
+{% if nombre and email %}
+<div class="response-box">
+    <h3>El registro se ha realizado con éxito:</h3>
+    <p>Nombre: {{ nombre }}</p>
+    <p>Email: {{ email }}</p>
+</div>
+{% endif %}
+...
+```
 
 > [!NOTE]
 > [Ejemplo 11](ejemplo_11/app.py)
 
-### 3.12 Ejemplo 12
+### 3.12 Ejemplo 12. Cómo integrar nuestro modelo LSTM en la aplicación web
 
 > [!NOTE]
 > [Ejemplo 12](ejemplo_12/app.py)

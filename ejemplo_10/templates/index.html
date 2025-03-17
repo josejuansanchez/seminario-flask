@@ -12,14 +12,13 @@
             <div class="form-group">
                 <label for="nombre">Nombre completo:</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" 
-                       required maxlength="50" value="{{ datos.nombre if datos }}">
+                       required maxlength="50">
             </div>
 
             <div class="form-group">
                 <label for="email">Correo electrónico:</label>
                 <input type="email" class="form-control" id="email" name="email"
-                       required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                       value="{{ datos.email if datos }}">
+                       required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
             </div>
 
             <button type="submit" class="btn">Registrar</button>
