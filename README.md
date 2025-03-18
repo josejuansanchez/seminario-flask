@@ -406,7 +406,7 @@ curl -X POST http://localhost:5000/
 curl -X GET http://localhost:5000/
 ```
 
-### 3.7 Ejemplo 07. Métodos HTTP (`GET` y `POST`) utilizando `request`
+### 3.7 Ejemplo 07. Métodos HTTP (`GET` y `POST`)
 
 ```python
 from flask import Flask
@@ -430,6 +430,20 @@ if __name__ == '__main__':
 
 > [!NOTE]
 > [Ejemplo 07](ejemplo_07/app.py)
+
+**Ejercicios**
+
+1. Modifique el ejemplo anterior para mostrar los datos que se envían en la
+   petición. Puede hacer uso del objeto `request` de Flask.
+
+```python
+print("\n=== Datos de la petición ===")
+print(f"Método: {request.method}")
+print(f"URL: {request.url}")
+print(f"Headers:\n{request.headers}")
+print(f"Parámetros GET: {request.args}")
+print(f"Datos POST/JSON: {request.get_data()}")
+```
 
 ### 3.8 Ejemplo 08. Plantillas Jinja2
 
