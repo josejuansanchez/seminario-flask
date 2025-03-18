@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Definimos los endpoints de la aplicación
 @app.route('/<string:name>')
-def index(name=None):
+def index(name):
     return f"Hola {name}!"
 
 @app.route('/producto/<int:id>')

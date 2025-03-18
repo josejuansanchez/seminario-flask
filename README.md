@@ -271,7 +271,7 @@ app = Flask(__name__)
 
 # Definimos los endpoints de la aplicación
 @app.route('/<string:name>')
-def index(name=None):    
+def index(name):
     return f"Hola {name}!"
 
 @app.route('/producto/<int:id>')
@@ -304,13 +304,16 @@ Los diferentes tipos de convertidores que podemos utilizar en las rutas son:
 
 **Ejercicios**
 
-1. Crea una ruta `/cuadrado/<int:numero>` que devuelva el cuadrado del número recibido.
-2. Crea una ruta `/suma/<int:num1>/<int:num2>` que devuelva la suma de los dos números recibidos.
+1. Añada las ruta `@app.route('/')` y `@app.route('/<string:name>')` a la
+   función `index` de forma que muestre un mensaje genérico cuando se acceda a la ruta `/` y un mensaje personalizado cuando se acceda a la ruta `/<string:name>`.
+2. Crea una ruta `/cuadrado/<int:numero>` que devuelva el cuadrado del número recibido.
+3. Crea una ruta `/suma/<int:num1>/<int:num2>` que devuelva la suma de los dos números recibidos.
 
-### 3.5 Ejemplo 05. Gestión de errores
+### 3.5 Ejemplo 05. Gestión de errores y redirecciones
 
 ```python
 from flask import Flask
+from flask import redirect
 
 # Creamos una instancia de Flask
 app = Flask(__name__)
@@ -324,6 +327,11 @@ def index():
 def page_not_found(error):
     return f"La página no existe. Error: {error}", 404
 
+@app.route('/redireccion')
+def redireccion():
+    return redirect('/')
+    #return redirect('/', code=301)    
+
 # Programa principal
 if __name__ == '__main__':
     app.run(debug=True)
@@ -331,6 +339,8 @@ if __name__ == '__main__':
 
 > [!NOTE]
 > [Ejemplo 05](ejemplo_05/app.py)
+
+**Gestión de errores**
 
 El decorador `@app.errorhandler` nos permite gestionar los errores que se
 producen en nuestra aplicación. En este caso, estamos gestionando el error `404`
@@ -340,6 +350,19 @@ La función que se pasa como argumento al decorador `@app.errorhandler` recibe e
 error que se ha producido y devuelve dos valores, un mensaje de error y el
 código de estado HTTP, que en este caso es el `404`. Si no se modifica este
 valor se devolvería el código de estado `200`.
+
+**Redireciones**
+
+Para hacer una redirección HTTP utilizamos la función `redirect` de Flask. Por
+defecto se hace una redirección HTTP con el código de estado `302`. Podríamos
+utilizar el argumento `code` para especificar el código de estado que queremos
+devolver.
+
+Ejemplo:
+
+```python
+return redirect('/', code=301)
+```
 
 ![](images/http-status-codes.png)
 
@@ -355,11 +378,11 @@ app = Flask(__name__)
 
 # Definimos los endpoints de la aplicación
 @app.get('/')
-def handle_get():
+def peticion_get():
     return "Petición por GET"
 
 @app.post('/')
-def handle_post():
+def peticion_post():
     return "Petición por POST"
 
 # Programa principal

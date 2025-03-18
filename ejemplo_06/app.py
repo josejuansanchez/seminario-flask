@@ -5,11 +5,11 @@ app = Flask(__name__)
 
 # Definimos los endpoints de la aplicación
 @app.get('/')
-def handle_get():
+def peticion_get():
     return "Petición por GET"
 
 @app.post('/')
-def handle_post():
+def peticion_post():
     return "Petición por POST"
 
 # Programa principal
