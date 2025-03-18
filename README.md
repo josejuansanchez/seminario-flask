@@ -15,7 +15,7 @@ desarrollamos en el seminario anterior con [TensorFlow/Keras][4].
   - [1.3 Creación y activación del entorno virtual](#13-creación-y-activación-del-entorno-virtual)
   - [1.4 Desactivación del entorno virtual](#14-desactivación-del-entorno-virtual)
   - [1.5 Instalación de las dependencias de forma manual](#15-instalación-de-las-dependencias-de-forma-manual)
-  - [1.6 Creación del archivo `requeriments.txt`](#16-creación-del-archivo-requeriments.txt)
+  - [1.6 Creación del archivo `requeriments.txt`](#16-creación-del-archivo-requerimentstxt)
 - [2. Conceptos básicos](#2-conceptos-básicos)
   - [2.1 ¿Qué es Flask?](#21-qué-es-flask)
   - [2.2 ¿Qué es el patrón MVC en aplicaciones web?](#22-qué-es-el-patrón-mvc-en-aplicaciones-web)
