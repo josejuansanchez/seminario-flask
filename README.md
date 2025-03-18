@@ -467,7 +467,37 @@ de nuestra aplicación web del código Python.
 - Las instrucciones se encierran entre llaves y porcentaje `{% instrucción %}`.
 - Los comentarios se encierran entre llaves y almohadillas `{# comentarios #}`.
 
-Estructura del proyecto:
+_Ejemplo de uso de variables:_
+
+```html
+<h1>Hola {{ nombre }}</h1> 
+```
+
+_Ejemplo de uso de condicionales y bucles:_
+
+```html
+{% if es_admin %}
+  <p>Tienes acceso de administrador</p>
+{% else %}
+  <p>Eres un usuario normal</p>
+{% endif %}
+```
+
+```html
+<ul>
+  {% for item in lista %}
+    <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+```
+
+_Ejemplo de uso de comentarios:_
+
+```html
+{# Esto es un comentario que no saldrá en el código HTML #}
+```
+
+**Estructura del proyecto:**
 
 ```
 .
@@ -476,7 +506,7 @@ Estructura del proyecto:
     └── index.html
 ```
 
-Código de la aplicación web `app.py`:
+**Código de la aplicación web `app.py`:**
 
 
 ```python
@@ -497,7 +527,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-Código de la plantilla `index.html`:
+**Código de la plantilla `index.html`:**
 
 ```html
 ...
@@ -516,7 +546,16 @@ Código de la plantilla `index.html`:
 
 ### 3.9 Ejemplo 09. Plantillas Jinja2 con hojas de estilo CSS
 
-Estructura del proyecto:
+En este ejemplo vamos a utlizar una hoja de estilo CSS en nuestra plantilla.
+Haremos uso de la función `url_for` para obtener la ruta de la hoja de estilo.
+
+_Ejemplo:_
+
+```html
+{{ url_for('static', filename='styles.css') }}
+```
+
+**Estructura del proyecto:**
 
 ```
 .
@@ -527,7 +566,7 @@ Estructura del proyecto:
     └── index.html
 ```
 
-Código fuente de la aplicación web `app.py`.
+**Código fuente de la aplicación web `app.py`.**
 
 ```python
 from flask import Flask
@@ -547,7 +586,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-Plantilla `index.html`:
+**Plantilla `index.html`:**
 
 ```html
 ...
@@ -571,10 +610,13 @@ Plantilla `index.html`:
 
 ### 3.10 Ejemplo 10. Formularios
 
-En este ejemplo **los datos del formulario se envían a una ruta diferente** de la
-ruta donde se está mostrando el formulario.
+En este ejemplo **los datos del formulario se envían a una ruta diferente** de
+la ruta donde se está mostrando el formulario.
 
-Estructura del proyecto:
+El formulario está en la ruta `/` y los datos se envían por `POST` a la ruta
+`/registro`.
+
+**Estructura del proyecto:**
 
 ```
 .
@@ -586,7 +628,7 @@ Estructura del proyecto:
     └── registro.html
 ```
 
-Código fuente de la aplicación web `app.py`:
+**Código fuente de la aplicación web `app.py`:**
 
 ```python
 from flask import Flask
@@ -620,7 +662,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-Plantilla `index.html`:
+**Plantilla `index.html`:**
 
 ```html
 ...
@@ -650,7 +692,10 @@ Plantilla `index.html`:
 En este ejemplo **los datos del formulario se envían a la misma ruta** del
 formulario.
 
-Estructura del proyecto:
+El formulario está en la ruta `/` y los datos se envían por `POST` a la misma
+ruta.
+
+**Estructura del proyecto:**
 
 ```
 .
@@ -661,7 +706,7 @@ Estructura del proyecto:
     └── index.html
 ```
 
-Código fuente de la aplicación web `app.py`:
+**Código fuente de la aplicación web `app.py`:**
 
 ```python
 from flask import Flask
@@ -689,7 +734,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-Plantilla `index.html`:
+**Plantilla `index.html`:**
 
 ```html
 ...
@@ -723,6 +768,9 @@ Plantilla `index.html`:
 > [Ejemplo 11](ejemplo_11/app.py)
 
 ### 3.12 Ejemplo 12. Cómo integrar nuestro modelo LSTM en la aplicación web
+
+Este ejemplo le servirá de ayuda para crear una aplicación web muy básica que
+haga uso del modelo LSTM que desarrollamos en el seminario anterior.
 
 > [!NOTE]
 > [Ejemplo 12](ejemplo_12/app.py)
