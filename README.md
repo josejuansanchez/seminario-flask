@@ -7,7 +7,7 @@ En este seminario vamos ver cómo crear una aplicación web **muy básica** con
 [Flask][1] y cómo integrar el modelo [LSTM][3] (_Long Short-Term Memory_) que
 desarrollamos en el seminario anterior con [TensorFlow/Keras][4].
 
-## 0. Índice de contenidos
+## Índice de contenidos
 
 - [1. Introducción](#1-introducción)
   - [1.1 Sesiones previas](#11-sesiones-previas)
