@@ -358,7 +358,7 @@ defecto se hace una redirección HTTP con el código de estado `302`. Podríamos
 utilizar el argumento `code` para especificar el código de estado que queremos
 devolver.
 
-Ejemplo:
+_Ejemplo:_
 
 ```python
 return redirect('/', code=301)
@@ -393,10 +393,15 @@ if __name__ == '__main__':
 > [!NOTE]
 > [Ejemplo 06](ejemplo_06/app.py)
 
-Para enviar peticiones `POST` y `GET` puede utilizar
+**Ejercicios:**
+
+1. Ejecute el código del ejemplo anterior y realice peticiones de tipo `GET` y
+   `POST`, para comprobar su funcionamiento.
+
+Para enviar peticiones `POST` y `GET` puede utilizar la utilidad
 [Postman](https://www.postman.com/) o [`curl`](https://curl.se/).
 
-**Ejemplos:**
+**Ejemplos de peticiones con `curl`:**
 
 ```bash
 curl -X POST http://localhost:5000/
@@ -447,6 +452,21 @@ print(f"Datos POST/JSON: {request.get_data()}")
 
 ### 3.8 Ejemplo 08. Plantillas Jinja2
 
+Las plantillas [Jinja2][10] nos van a permitir separar la lógica de presentación
+de nuestra aplicación web del código Python.
+
+**Fundamentos básicos de plantillas Jinja2:**
+
+- Las plantillas Jinja2 se guardan en la carpeta `templates`.
+- Las plantillas se renderizan con el método `render_template` de Flask.
+- Las plantillas pueden contener variables, condicionales, bucles y herencia.
+
+**Sintaxis básica de Jinja2:**
+
+- Las variables se encierran entre llaves dobles `{{ variable }}`.
+- Las instrucciones se encierran entre llaves y porcentaje `{% instrucción %}`.
+- Los comentarios se encierran entre llaves y almohadillas `{# comentarios #}`.
+
 Estructura del proyecto:
 
 ```
@@ -480,13 +500,7 @@ if __name__ == '__main__':
 Código de la plantilla `index.html`:
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola desde Flask</title>
-</head>
+...
 <body>
     {% if person %}
     <h1>Hola {{ person }}!</h1>
@@ -494,7 +508,7 @@ Código de la plantilla `index.html`:
     <h1>Hola mundo!</h1>
     {% endif %}    
 </body>
-</html>
+...
 ```
 
 > [!NOTE]
